@@ -1,68 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+<title> Create an Account </title>
+
 <h1> Create an account </h1>
+
 </head>
 
-<script>
-var divs =[
-	"errorfirst",
-	"errorlast",
-	"erroremail",
-	"erroruser",
-	"errorpass",
-	"errorconfirm"
-];
-
-function validate() 
+<Style>
+body
 {
-var inputs =[];
-inputs[0]=document.getElementById("first").value;
-inputs[1]=document.getElementById("last").value;
-inputs[2]=document.getElementById("email").value;
-inputs[3]=document.getElementById("user").value;
-inputs[4]=document.getElementById("pass").value;
-inputs[5]=document.getElementById("passconfirmm").value;
+  background-color: #84C0DF;
+  font-family: courier;
+}
+</style>
+	<script>
 
-var errors =[];
-errors[0]= "<span stlye='color:red'> please enter first name ></span>
-errors[1]= "<span stlye='color:red'> please enter last name ></span>
-errors[2]= "<span stlye='color:red'> please enter your email ></span>
-errors[3]= "<span stlye='color:red'> please enter username ></span>
-errors[4]= "<span stlye='color:red'> please enter password ></span>
-errors[5]= "<span stlye='color:red'> please enter confirm password ></span>
+		var divs = [
+		  "errorFirst", 
+		  "errorLast", 
+		  "errorEmail",
 
-var i;
-for (i=0; i<inputs.length; i++)
+		];
+		
+
+		function validate()
+		{
+		
+			var inputs = [];
+			inputs[0] = document.getElementById("first").value;
+			inputs[1] = document.getElementById("last").value;
+			inputs[2] = document.getElementById("email").value;
+
+			
+			
+			var errors = [];
+			errors[0] = "<span style='color:red'> Please enter your first name!</span>"
+			errors[1] = "<span style='color:red'> Please enter your last name!</span>"
+			errors[2] = "<span style='color:red'> Please enter your email address!</span>"
+	
+			
+		
+			var i;
+			for (i=0; i<inputs.length; i++)
 			{
-				var errorm = errors[i];
+				var errorMessage = errors[i];
 				var entry = divs[i];
 				
 				
 				if (inputs[i] == "")
-					document.getElementById(entry).innerHTML = errorm;
+					document.getElementById(entry).innerHTML = errorMessage;
 				else if (i == 2)
 				{
-					var atpos = inputs[i].indexOf("@");
+					
+					var atpos = inputs[i].indexOf("@");  
 					var dotpos = inputs[i].lastIndexOf("."); 
-				
-				
+					
+					
 					if (atpos < 1 || dotpos < atpos + 2 || dotpos >= inputs[i].length)
 						document.getElementById(entry).innerHTML = "<span style = 'color:red' > Please enter a valid email address!</span>";
 					else
 						
-						document.getElementById(entry).innerHTML = "OK!";
+						document.getElementById(entry).innerHTML = "Thanks!";
 				}
-				else if (i == 5) 
-				{
-					
-					if (inputs[4] != inputs[5])
-						document.getElementById(entry).innerHTML = "<span style = 'color:red'> Your passwords don't match!</span>";
-					else
-						document.getElementById(entry).innerHTML = "OK!";
-				}
+				
 				else
-					document.getElementById(entry).innerHTML = "OK!";
+					document.getElementById(entry).innerHTML = "Thanks!";
 			}
 		}
 		
@@ -74,54 +78,39 @@ for (i=0; i<inputs.length; i++)
 			for (i=0; i<divs.length; i++)
 			{
 				
-				if (document.getElementById(divs[i]).innerHTML != "OK!")
+				if (document.getElementById(divs[i]).innerHTML != "Thanks!")
 					flag = 0;
 			}
 			
-			if (flag == 1)
-				document.getElementById("errorFinal").innerHTML = "Everything looks good!!"
+			if (flag == 1) 
+				document.getElementById("errorFinal").innerHTML = "Thanks for entering your information!"
 		}
-</script>
+	</script>
+</head>
 
 <body>
 	<table>
 		<tr>
 			<td> First Name:</td>
-			<td> <input type ="text" id="first" onkeyup="validate();"/></td>
-			<td><div id="errorfirst"> </div></td>
-	
+			<td><input type="text" id="first" onkeyup="validate();"/></td>
+			<td><div id="errorFirst"></div></td>
 		</tr>
 		<tr>
-			<td> Last name:</td>
-			<td> <input type ="text" id="last" onkeyup="validate();"/></td>
-			<td><div id="errorlast"> </div></td>
-	
+			<td> Last Name:</td>
+			<td><input type="text" id="last" onkeyup="validate();"/></td>
+			<td><div id="errorLast"></div></td>
 		</tr>
 		<tr>
 			<td> Email:</td>
-			<td> <input type ="text" id="email" onkeyup="validate();"/></td>
-			<td><div id="erroremail"> </div></td>
-	
+			<td><input type="text" id="email" onkeyup="validate();"/></td>
+			<td><div id="errorEmail"></div></td>
 		</tr>
 		<tr>
-			<td> Username:</td>
-			<td> <input type ="text" id="user" onkeyup="validate();"/></td>
-			<td><div id="erroruser"> </div></td>
-		</tr>
-		<tr>
-			<td> Password:</td>
-			<td> <input type ="password" id="pass" onkeyup="validate();"/></td>
-			<td><div id="errorpass"> </div></td>
-		</tr>
-		<tr>
-			<td> Confirm Password:</td>
-			<td> <input type ="password" id="passconfirm" onkeyup="validate();"/></td>
-			<td><div id="errorconfirm"> </div></td>
-		</tr>
-		<tr>
-			<td> <input type ="button" id="create" value="create" onclick="validate();finalValidate();"/></td>
+			<td><input type="button" id="create" value="Create" onclick="validate();finalValidate();"/></td>
 			<td><div id="errorFinal"></div></td>
 		</tr>
 	</table>
 </body>
+
+
 </html>
