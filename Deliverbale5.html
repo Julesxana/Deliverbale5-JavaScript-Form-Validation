@@ -3,14 +3,16 @@
 <html>
 <head>
 <h1> Create an account </h1>
+</head>
+
 <script>
 var divs =[
-	"errorfirst";
-	"errorflast";
-	"erroremail";
-	"erroruser";
-	"errorpass";
-	"errorconfirm";
+	"errorfirst",
+	"errorflast",
+	"erroremail",
+	"erroruser",
+	"errorpass",
+	"errorconfirm"
 ];
 
 function validate() 
@@ -21,15 +23,15 @@ inputs[1]=document.getElementById("last").value;
 inputs[2]=document.getElementById("email").value;
 inputs[3]=document.getElementById("user").value;
 inputs[4]=document.getElementById("pass").value;
-inputs[5]=document.getElementById("passconfrim").value;
+inputs[5]=document.getElementById("passconfirmm").value;
 
 var errorm =[];
-errors[0]= "<span stlye='color:red'> please enter first name</span>;
-errors[1]= "<span stlye='color:red'> please enter last name</span>;
-errors[2]= "<span stlye='color:red'> please enter your email</span>;
-errors[3]= "<span stlye='color:red'> please enter username</span>;
-errors[4]= "<span stlye='color:red'> please enter password</span>;
-errors[5]= "<span stlye='color:red'> please enter confirm password</span>;
+errors[0]= "<span stlye='color:red'> please enter first name ></span>;
+errors[1]= "<span stlye='color:red'> please enter last name ></span>;
+errors[2]= "<span stlye='color:red'> please enter your email ></span>;
+errors[3]= "<span stlye='color:red'> please enter username ></span>;
+errors[4]= "<span stlye='color:red'> please enter password ></span>;
+errors[5]= "<span stlye='color:red'> please enter confirm password ></span>;
 
 var i;
 for (i=0; i<inputs.length; i++)
@@ -42,6 +44,7 @@ for (i=0; i<inputs.length; i++)
 					document.getElementById(entry).innerHTML = errorm;
 				else if (i == 2)
 				{
+					var atpos = inputs[i].indexOf("@");
 					var dotpos = inputs[i].lastIndexOf("."); 
 				
 				
@@ -80,7 +83,6 @@ for (i=0; i<inputs.length; i++)
 				document.getElementById("errorFinal").innerHTML = "Everything looks good!!"
 		}
 </script>
-</head>
 
 <body>
 	<table>
